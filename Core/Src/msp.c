@@ -6,3 +6,10 @@
  */
 
 
+void HAL_MspInit(void)
+{
+	HAL_NVIC_SetPriority(USART1_IRQn, 1, 0);
+
+
+
+}
