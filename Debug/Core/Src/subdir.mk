@@ -5,12 +5,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/it.c \
+../Core/Src/main.c \
+../Core/Src/msp.c \
 ../Core/Src/system_stm32g0xx.c 
 
 OBJS += \
+./Core/Src/it.o \
+./Core/Src/main.o \
+./Core/Src/msp.o \
 ./Core/Src/system_stm32g0xx.o 
 
 C_DEPS += \
+./Core/Src/it.d \
+./Core/Src/main.d \
+./Core/Src/msp.d \
 ./Core/Src/system_stm32g0xx.d 
 
 
@@ -21,7 +30,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/system_stm32g0xx.cyclo ./Core/Src/system_stm32g0xx.d ./Core/Src/system_stm32g0xx.o ./Core/Src/system_stm32g0xx.su
+	-$(RM) ./Core/Src/it.cyclo ./Core/Src/it.d ./Core/Src/it.o ./Core/Src/it.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/msp.cyclo ./Core/Src/msp.d ./Core/Src/msp.o ./Core/Src/msp.su ./Core/Src/system_stm32g0xx.cyclo ./Core/Src/system_stm32g0xx.d ./Core/Src/system_stm32g0xx.o ./Core/Src/system_stm32g0xx.su
 
 .PHONY: clean-Core-2f-Src
 
