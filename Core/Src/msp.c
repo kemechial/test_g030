@@ -4,24 +4,22 @@
  *  Created on: Sep 17, 2024
  *      Author: Lenovo
  */
-
+#include "stm32g0xx_hal.h"
 
 void HAL_MspInit(void)
 {
 	//STM32G030 does not have priority grouping otherwise
 	// there would be a HAL_NVIC_SetPriorityGrouping(uint32_t PriorityGroup) call here.
 
-
-
-
-
 }
 
 void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 {
 	GPIO_InitTypeDef gpio_uart;
-	//Enable the clock for uart
+	//Enable the clock for uart and GPIO pins
 	__HAL_RCC_USART1_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+
 	//Do the pin mux configurations
 	gpio_uart.Pin = GPIO_PIN_9;
 	gpio_uart.Mode = GPIO_MODE_AF_PP;

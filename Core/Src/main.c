@@ -7,12 +7,15 @@
 
 #include "stm32g0xx_hal.h"
 #include "main.h"
+#include "string.h"
 
 UART_HandleTypeDef huart1;
 
+char* user_data = "The application is running.\r\n";
+
 void SystemClockConfig(void);
 void UART1_Init(void);
-void Error_handler(void)
+void Error_handler(void);
 
 int main(void)
 {
@@ -20,6 +23,15 @@ int main(void)
 	SystemClockConfig();
 	UART1_Init();
 
+	uint16_t str_size = strlen(user_data);
+    while(1){
+	if(HAL_UART_Transmit(&huart1, (uint8_t *) user_data, str_size, HAL_MAX_DELAY)!=HAL_OK){
+		Error_handler();
+	}
+
+	HAL_Delay(1000);
+
+   }
 	return 0;
 }
 
